@@ -47,7 +47,7 @@ class BuyerController extends AdminController
 
             });
 
-            $grid->column('status');
+            $grid->column('status','状态');
 
             $grid->created_at->display(function ($created_at) {
                 return Carbon::parse($created_at)->format('Y-m-d');
