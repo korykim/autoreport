@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
+
     protected $autoWriteTimestamp = 'datetime';
     protected $dateFormat = 'Y-m-d H:i:s';
+    protected $guarded = [];
 
     public function tags()
     {

@@ -13,7 +13,8 @@ return [
         'fax' => '传真',
         'site' => '网站',
         'address' => '地址',
-        'user_id' => '主人',
+        'category' => '类目',
+        'user_id' => '主人(必选)',
     ],
     'options' => [
     ],

@@ -2,31 +2,26 @@
 
 namespace App\Admin\Renderable;
 
-use Dcat\Admin\Admin;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Grid\LazyRenderable;
-
 //use Dcat\Admin\Models\Administrator;
-use App\Models\Buyer as Administrator;
+use App\Models\Category as Administrator;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
 
-class BuyerTable extends LazyRenderable
+class CategoryTable extends LazyRenderable
 {
-
-
     public function grid(): Grid
     {
-
-
         // 获取外部传递的参数
         $id = $this->id;
 
-        return Grid::make(new Administrator, function (Grid $grid) {
+        return Grid::make(new Administrator(), function (Grid $grid) {
             $grid->column('id');
 
             $grid->column('name');
             //$grid->column('email');
+
+
 //            $grid->created_at->display(function ($created_at) {
 //                return Carbon::parse($created_at)->format('Y-m-d');
 //            });
@@ -50,12 +45,6 @@ class BuyerTable extends LazyRenderable
 
                 $filter->like('name')->width(4);
             });
-
-
         });
-
-
     }
-
-
 }

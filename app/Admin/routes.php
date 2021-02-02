@@ -23,5 +23,6 @@ Route::group([
     $router->resource('taggable', 'TaggableController');
     $router->resource('contact', 'ContactController');
     $router->resource('jobtag', 'JobTagController');
+    $router->resource('category', 'CategoryController');
 
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Buyer;
 use App\Models\Customer;
+use App\Models\tag;
+use App\Models\Taggable;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -40,9 +42,47 @@ class UserController extends Controller
     }
 
     public function dd(){
-        $customer=Customer::where('id', '=',1)->firstOrFail();
+        $customer=Customer::where('id', '=',7)->firstOrFail();
 
-        return $customer->name;
+        return $customer;
+    }
+
+    public function op(){
+        $user = User::where('name','=',"kotra")->first();
+        return $user->id;
+    }
+    public function adx(){
+
+        //$tag = Tag::find(1);
+        //dd($tag->customers);
+
+//        $tas=taggable::all();
+//        dd($tas);
+//
+        $bb=buyer::find(2);
+
+        $tag = new Tag;
+        $tag->name = "ItSolutionStuff.com";
+
+        $rs=$bb->tags()->save($tag);
+
+        dd($rs);
+
+
+//        $buyer = Buyer::find(2);
+//
+//        $tag1 = new Taggable;
+//        $tag1->tag_id = 3;
+//        $tag1->taggable_id = 1;
+//
+//        $tag2 = new Taggable;
+//        $tag2->tag_id = 4;
+//        $tag1->taggable_id = 1;
+//
+//
+//
+//        $result=$buyer->taggable()->saveMany([$tag1, $tag2]);
+//        return $result;
     }
 
     /**

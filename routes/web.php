@@ -22,4 +22,6 @@ Route::get('addUser', [UserController::class,'index']);
 Route::get('test', [UserController::class,'test']);
 Route::get('cc', [UserController::class,'cc']);
 Route::get('dd', [UserController::class,'dd']);
+Route::get('adx', [UserController::class,'adx']);
+Route::get('op', [UserController::class,'op']);
 

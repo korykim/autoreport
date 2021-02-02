@@ -50,11 +50,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection ceo
      * @property Grid\Column|Collection site
      * @property Grid\Column|Collection address
+     * @property Grid\Column|Collection status
+     * @property Grid\Column|Collection category
      * @property Grid\Column|Collection customer_id
      * @property Grid\Column|Collection to
      * @property Grid\Column|Collection content
      * @property Grid\Column|Collection tag
      * @property Grid\Column|Collection totime
+     * @property Grid\Column|Collection Year
      * @property Grid\Column|Collection uuid
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
@@ -111,11 +114,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection ceo(string $label = null)
      * @method Grid\Column|Collection site(string $label = null)
      * @method Grid\Column|Collection address(string $label = null)
+     * @method Grid\Column|Collection status(string $label = null)
+     * @method Grid\Column|Collection category(string $label = null)
      * @method Grid\Column|Collection customer_id(string $label = null)
      * @method Grid\Column|Collection to(string $label = null)
      * @method Grid\Column|Collection content(string $label = null)
      * @method Grid\Column|Collection tag(string $label = null)
      * @method Grid\Column|Collection totime(string $label = null)
+     * @method Grid\Column|Collection Year(string $label = null)
      * @method Grid\Column|Collection uuid(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
@@ -177,11 +183,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection ceo
      * @property Show\Field|Collection site
      * @property Show\Field|Collection address
+     * @property Show\Field|Collection status
+     * @property Show\Field|Collection category
      * @property Show\Field|Collection customer_id
      * @property Show\Field|Collection to
      * @property Show\Field|Collection content
      * @property Show\Field|Collection tag
      * @property Show\Field|Collection totime
+     * @property Show\Field|Collection Year
      * @property Show\Field|Collection uuid
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
@@ -238,11 +247,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection ceo(string $label = null)
      * @method Show\Field|Collection site(string $label = null)
      * @method Show\Field|Collection address(string $label = null)
+     * @method Show\Field|Collection status(string $label = null)
+     * @method Show\Field|Collection category(string $label = null)
      * @method Show\Field|Collection customer_id(string $label = null)
      * @method Show\Field|Collection to(string $label = null)
      * @method Show\Field|Collection content(string $label = null)
      * @method Show\Field|Collection tag(string $label = null)
      * @method Show\Field|Collection totime(string $label = null)
+     * @method Show\Field|Collection Year(string $label = null)
      * @method Show\Field|Collection uuid(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
