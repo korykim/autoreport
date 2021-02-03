@@ -85,14 +85,15 @@ class BuyerPeopleController extends AdminController
         return Form::make(new BuyerPeople(), function (Form $form) {
             $form->display('id');
             $form->text('name');
-            $form->text('email');
+            $form->email('email');
             $form->text('tel');
-            $form->text('hp');
+            $form->mobile('hp')->options(['mask' => '999 9999 9999']);
             $form->text('wechat');
-            $form->text('sex');
+            $form->radio('sex')->options(['0' => '女', '1'=> '男'])->default('0');
             $form->text('age');
             $form->text('fax');
 
+            //$form->listbox('aa')->options([1 => 'foo', 2 => 'bar', 'val' => 'Option name']);
 
             $form->selectTable('buyer_id')
                 ->title('弹窗标题')

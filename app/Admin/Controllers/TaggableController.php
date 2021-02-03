@@ -3,14 +3,18 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Repositories\Taggable;
-use App\Models\Customer;
+
 use App\Models\tag;
 use App\Models\User;
+use App\Models\Buyer;
+use App\Models\Contact;
+use App\Models\Customer;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Illuminate\Support\Carbon;
+use Str;
 
 class TaggableController extends AdminController
 {
@@ -33,7 +37,20 @@ class TaggableController extends AdminController
             });
             $grid->column('taggable_type');
 
-            $grid->column('taggable_id');
+
+
+            $grid->column('taggable_id')->display(function ($tid){
+                $model=Str::afterLast($this->taggable_type,'\\');
+                if($model=='Buyer'){
+                    return Buyer::where('id', '=',$tid)->firstOrFail()->name;
+                }else if($model=='Customer'){
+                    return Customer::where('id', '=',$tid)->firstOrFail()->name;
+                }else if($model=='Contact'){
+                    return Contact::where('id', '=',$tid)->firstOrFail()->name;
+                }
+
+
+            });
             //->display(function ($tid){
             //                $customer=Customer::where('id', '=',1)->firstOrFail();
             //

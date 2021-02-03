@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "189ffd0b4d2c718dca91e549c2a7efa0",
+    "content-hash": "6fffaba3739fc8bf97f704d9a1578166",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -204,6 +204,72 @@
                 "source": "https://github.com/jqhph/dcat-admin/tree/2.0.16-beta"
             },
             "time": "2021-01-11T13:16:21+00:00"
+        },
+        {
+            "name": "dcat/laravel-wherehasin",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jqhph/laravel-wherehasin.git",
+                "reference": "db5715a02b1bd7ae27a81ddda67609e674b27518"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jqhph/laravel-wherehasin/zipball/db5715a02b1bd7ae27a81ddda67609e674b27518",
+                "reference": "db5715a02b1bd7ae27a81ddda67609e674b27518",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.4",
+                "laravel/laravel": ">=5.5",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dcat\\Laravel\\Database\\WhereHasInServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dcat\\Laravel\\Database\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jqh",
+                    "email": "841324345@qq.com"
+                }
+            ],
+            "description": "Laravel ORM whereHasIn",
+            "homepage": "https://github.com/jqhph/dcat-admin",
+            "keywords": [
+                "laravel",
+                "orm",
+                "relation",
+                "whereHas"
+            ],
+            "support": {
+                "issues": "https://github.com/jqhph/laravel-wherehasin/issues",
+                "source": "https://github.com/jqhph/laravel-wherehasin/tree/0.6.0"
+            },
+            "time": "2021-01-27T07:53:23+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

@@ -70,6 +70,7 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
             'fax' => $row['传真'],
             'site' => $row['网站'],
             'address' => $row['地址'],
+            'status' => $row['状态'],
             'user_id' => $this->findUser($row['所属用户']),
             'category' => $this->findCategory($row['类目']),
         ]);

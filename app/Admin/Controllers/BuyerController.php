@@ -10,6 +10,7 @@ use App\Models\tag;
 use App\Models\Category as CategoryAdministrator;
 use App\Models\User;
 use App\Models\User as Administrator;
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
@@ -40,7 +41,10 @@ class BuyerController extends AdminController
                 return CategoryAdministrator::find($tt)->name;
 
             })->badge();
-            $grid->column('address');
+            $grid->column('address')->limit(5, '...');
+            $grid->column('tags','标签')->display(function ($dd){
+                return $dd->pluck('name');
+            })->badge();
             $grid->column('user_id','主人')->display(function ($userId) {
                 return User::find($userId)->name;
             });
@@ -63,8 +67,9 @@ class BuyerController extends AdminController
                 ->dot(
                     [
                         0 => 'danger',
-                        1 => 'success',
+                        1 => Admin::color()->info(),
                         2 => 'primary',
+                        3 => 'success',
 
                     ],
                     'primary' // 第二个参数为默认值
@@ -147,7 +152,7 @@ class BuyerController extends AdminController
             $form->text('ceo');
             $form->text('tel');
             $form->text('fax');
-            $form->text('site');
+            $form->url('site');
             $form->text('address');
             $form->switch('status','状态');
 

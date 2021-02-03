@@ -9,6 +9,11 @@ use App\Models\Taggable;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
+
 class UserController extends Controller
 {
     /**
@@ -48,8 +53,10 @@ class UserController extends Controller
     }
 
     public function op(){
-        $user = User::where('name','=',"kotra")->first();
-        return $user->id;
+//        $user = User::where('name','=',"kotra")->first();
+//        return $user->id;
+
+        return $this->getModels();
     }
     public function adx(){
 
@@ -83,6 +90,36 @@ class UserController extends Controller
 //
 //        $result=$buyer->taggable()->saveMany([$tag1, $tag2]);
 //        return $result;
+    }
+
+    /**
+     * 获取所有model
+     * @return Collection
+     */
+    function getModels(): Collection
+    {
+        $models = collect(File::allFiles(app_path()))
+            ->map(function ($item) {
+                $path = $item->getRelativePathName();
+                $class = sprintf('\%s%s',
+                    Container::getInstance()->getNamespace(),
+                    strtr(substr($path, 0, strrpos($path, '.')), '/', '\\'));
+
+                return $class;
+            })
+            ->filter(function ($class) {
+                $valid = false;
+
+                if (class_exists($class)) {
+                    $reflection = new \ReflectionClass($class);
+                    $valid = $reflection->isSubclassOf(Model::class) &&
+                        !$reflection->isAbstract();
+                }
+
+                return $valid;
+            });
+
+        return $models->values();
     }
 
     /**

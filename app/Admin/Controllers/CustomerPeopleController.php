@@ -87,11 +87,11 @@ class CustomerPeopleController extends AdminController
         return Form::make(new CustomerPeople(), function (Form $form) {
             $form->display('id');
             $form->text('name');
-            $form->text('email');
+            $form->email('email');
             $form->text('tel');
-            $form->text('hp');
+            $form->mobile('hp')->options(['mask' => '999 9999 9999']);
             $form->text('wechat');
-            $form->text('sex');
+            $form->radio('sex')->options(['0' => '女', '1'=> '男'])->default('0');
             $form->text('age');
             $form->text('fax');
             //$form->text('customer_id');

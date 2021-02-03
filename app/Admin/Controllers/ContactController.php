@@ -53,16 +53,16 @@ class ContactController extends AdminController
 
 
             $grid->column('id')->sortable();
-            $grid->column('title');
+            $grid->column('title')->filter(Grid\Column\Filter\Like::make());
             $grid->column('customer_id')->display(function ($customer_id) {
                 return CustomerAdministrator::find($customer_id)->name;
-            });
+            })->filter('customer.id');
             $grid->column('buyer_id')->display(function ($buyer_id) {
                 return BuyerAdministrator::find($buyer_id)->name;
-            });
+            })->filter('buyer.id');
             $grid->column('to')->display(function ($buyerpeople_id) {
                 return BuyerPeopleAdministrator::find($buyerpeople_id)->name;
-            });
+            })->filter('to');
 
             //$grid->column('content');
 
@@ -77,16 +77,31 @@ class ContactController extends AdminController
                 return $directors[$options];
 
 
-            });
+            })->filter('options');
 
             $grid->column('tag','状态')->display(function ($tag) { //JobTag
                 return JobTag::find($tag)->name;
-            })->badge();
+            })->badge('info')->filter(
+                Grid\Column\Filter\In::make([
+                    1 => '开发',
+                    2 => '接触',
+                    3 => '跟进',
+                    4 => '结果',
+                    5 => '废弃',
+                ])
+            );
 
+
+
+            $grid->column('tags','标签')->display(function ($dd){
+                return $dd->pluck('name');
+            })->badge('danger');
 
             $grid->column('totime')->display(function ($totime) {
                 return Carbon::parse($totime)->format('Y-m-d');
-            })->sortable();
+            })->filter(
+                Grid\Column\Filter\Gt::make()->datetime('YYYY-MM-DD')
+            );
 
             $grid->created_at->display(function ($created_at) {
                 return Carbon::parse($created_at)->format('Y-m-d');
@@ -99,6 +114,7 @@ class ContactController extends AdminController
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
+                $filter->like('title');
 
             });
         });
@@ -140,9 +156,11 @@ class ContactController extends AdminController
         return Form::make(new Contact(), function (Form $form) {
 
             $form->display('id');
-            $form->text('title');
+            $form->text('title')->required();
 
             $form->selectTable('customer_id')
+                ->required()
+                ->placeholder('选择客户')
                 ->title('选择用户')
                 ->dialogWidth('50%') // 弹窗宽度，默认 800px
                 ->from(CustomerTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
@@ -151,7 +169,9 @@ class ContactController extends AdminController
 
 
             $form->selectTable('buyer_id')
+                ->required()
                 ->title('选择用户')
+                ->placeholder('选择买家')
                 ->dialogWidth('50%') // 弹窗宽度，默认 800px
                 ->from(BuyerTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
                 ->model(BuyerAdministrator::class, 'id', 'name');// 设置编辑数据显示
@@ -166,6 +186,8 @@ class ContactController extends AdminController
 
 
             $form->selectTable('to')
+                ->required()
+                ->placeholder('选择买家联系人')
                 ->title('选择用户')
                 ->dialogWidth('50%') // 弹窗宽度，默认 800px
                 ->from(BuyerPeopleTable::make()) // 设置渲染类实例，并传递自定义参数  ->payload(['io' =>'1'])
@@ -182,11 +204,13 @@ class ContactController extends AdminController
                 4 => '拜访',
             ];
 
-            $form->select('options','联系方法')->options($directors);
+            $form->select('options','联系方法')->options($directors)->required();
 
 
             //$form->select('tag','状态')->options($jobtags);
             $form->selectTable('tag','状态')
+                ->required()
+                ->placeholder('选择状态')
                 ->title('选择工作状态')
                 ->dialogWidth('50%') // 弹窗宽度，默认 800px
                 ->from(JobTagTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
@@ -213,8 +237,9 @@ class ContactController extends AdminController
 //                });
 
 
-            $form->datetime('totime');
+            $form->datetime('totime')->required();
 
+            //$form->map("39.56","116.20","坐标");
             $form->display('created_at');
             $form->display('updated_at');
         });
