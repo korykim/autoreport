@@ -56,10 +56,10 @@ class ContactController extends AdminController
             $grid->column('title')->filter(Grid\Column\Filter\Like::make());
             $grid->column('customer_id')->display(function ($customer_id) {
                 return CustomerAdministrator::find($customer_id)->name;
-            })->filter('customer.id');
+            })->filterByValue('customer.id');
             $grid->column('buyer_id')->display(function ($buyer_id) {
                 return BuyerAdministrator::find($buyer_id)->name;
-            })->filter('buyer.id');
+            })->filterByValue('buyer.id');
             $grid->column('to')->display(function ($buyerpeople_id) {
                 return BuyerPeopleAdministrator::find($buyerpeople_id)->name;
             })->filter('to');
@@ -77,7 +77,14 @@ class ContactController extends AdminController
                 return $directors[$options];
 
 
-            })->filter('options');
+            })->filter(
+                Grid\Column\Filter\In::make([
+                    1 => '邮件',
+                    2 => '电话',
+                    3 => '线上(Zoom,Wechat)',
+                    4 => '拜访',
+                ])
+            );
 
             $grid->column('tag','状态')->display(function ($tag) { //JobTag
                 return JobTag::find($tag)->name;

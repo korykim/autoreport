@@ -31,23 +31,29 @@ class BuyerController extends AdminController
     {
         return Grid::make(new Buyer(['tags','buyerpeoples']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('name');
+            $grid->column('name')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             //$grid->column('creditcode');
-            $grid->column('ceo');
+            $grid->column('ceo')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             $grid->column('tel');
             //$grid->column('fax');
             $grid->column('site');
             $grid->column('category','类目')->display(function ($tt){
                 return CategoryAdministrator::find($tt)->name;
 
-            })->badge();
-            $grid->column('address')->limit(5, '...');
+            })->badge()->filterByValue('category');
+            $grid->column('address')->limit(5, '...')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             $grid->column('tags','标签')->display(function ($dd){
                 return $dd->pluck('name');
             })->badge();
             $grid->column('user_id','主人')->display(function ($userId) {
                 return User::find($userId)->name;
-            });
+            })->filterByValue('user.id');
 
 //            $grid->column('tags','标签数')->display(function ($ss){
 //                $count = count($ss);
@@ -73,7 +79,7 @@ class BuyerController extends AdminController
 
                     ],
                     'primary' // 第二个参数为默认值
-                )->sortable();
+                )->sortable()->filterByValue('status');
 
 
 //            $grid->column('tags')->display(function ($pp){
@@ -86,7 +92,9 @@ class BuyerController extends AdminController
 
             $grid->created_at->display(function ($created_at) {
                 return Carbon::parse($created_at)->format('Y-m-d');
-            })->sortable();
+            })->sortable()->filter(
+                Grid\Column\Filter\Gt::make()->datetime('YYYY-MM-DD')
+            );
 
 
 //            $grid->updated_at->display(function ($updated_at) {
@@ -100,7 +108,7 @@ class BuyerController extends AdminController
 //            });
 
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('name');
+                $filter->like('name');
                 //$filter->like('category');
 
             });

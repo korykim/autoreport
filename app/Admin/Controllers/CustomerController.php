@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Grid\Customerx;
+use App\Admin\Actions\Grid\Reast;
 use App\Admin\Renderable\CategoryTable;
 use App\Admin\Renderable\TagTable;
 use App\Admin\Repositories\Customer;
@@ -29,17 +31,23 @@ class CustomerController extends AdminController
     {
         return Grid::make(new Customer(['tags', 'customerpeoples']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('name');
+            $grid->column('name')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             //$grid->column('creditcode');
-            $grid->column('ceo');
+            $grid->column('ceo')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             $grid->column('tel');
             //$grid->column('fax');
             $grid->column('site');
             $grid->column('category', '类目')->display(function ($tt) {
                 return CategoryAdministrator::find($tt)->name;
 
-            })->badge();
-            //$grid->column('address')->limit(5, '...');
+            })->badge()->filterByValue('category');
+            $grid->column('address')->limit(5, '...')->filter(
+                Grid\Column\Filter\Like::make()
+            );
 //            $grid->column('tags','标签数')->display(function ($ss){
 //                $count = count($ss);
 //
@@ -68,10 +76,10 @@ class CustomerController extends AdminController
 
                     ],
                     'primary' // 第二个参数为默认值
-                )->sortable();
-            $grid->column('Year')->sortable();
-            $grid->column('start')->sortable();
-            $grid->column('end')->sortable();
+                )->sortable()->filterByValue('status');
+            $grid->column('Year')->sortable()->filter('Year');
+            $grid->column('start')->sortable()->filterByValue('start');
+            $grid->column('end')->sortable()->filterByValue('end');
 
             $grid->column('tags','标签')->display(function ($dd){
                 return $dd->pluck('name');
@@ -79,7 +87,7 @@ class CustomerController extends AdminController
 
             $grid->column('user_id', '主人')->display(function ($userId) {
                 return User::find($userId)->name;
-            });
+            })->filter('user.id');
 
 
             $grid->created_at->display(function ($created_at) {
@@ -101,7 +109,13 @@ class CustomerController extends AdminController
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
+                $filter->like('name');
 
+            });
+
+            $grid->tools(function (Grid\Tools $tools) {
+                // excle 导入
+                //$tools->append(new Reast());
             });
         });
     }

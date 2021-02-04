@@ -22,7 +22,9 @@ class BuyerPeopleController extends AdminController
     {
         return Grid::make(new BuyerPeople(), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('name','买家员工名');
+            $grid->column('name','买家员工名')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             $grid->column('email');
             $grid->column('tel');
             $grid->column('hp');
@@ -34,10 +36,10 @@ class BuyerPeopleController extends AdminController
 
             $grid->column('buyer_id')->display(function($buyerId) {
                 return Administrator::find($buyerId)->name;
-            });
+            })->filter('buyer.id');
             $grid->created_at->display(function ($created_at) {
                 return Carbon::parse($created_at)->format('Y-m-d');
-            });
+            })->sortable();
 
 //            $grid->updated_at->display(function ($updated_at) {
 //                return Carbon::parse($updated_at)->format('Y-m-d');
@@ -45,6 +47,7 @@ class BuyerPeopleController extends AdminController
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
+                $filter->like('name');
 
             });
         });

@@ -23,7 +23,9 @@ class CustomerPeopleController extends AdminController
     {
         return Grid::make(new CustomerPeople(), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('name');
+            $grid->column('name')->filter(
+                Grid\Column\Filter\Like::make()
+            );
             $grid->column('email');
             $grid->column('tel');
             $grid->column('hp');
@@ -34,19 +36,20 @@ class CustomerPeopleController extends AdminController
 
             $grid->column('customer_id')->display(function($customerId) {
                 return Administrator::find($customerId)->name;
-            });
+            })->filter('customer.id');
             $grid->created_at->display(function ($created_at) {
                 return Carbon::parse($created_at)->format('Y-m-d');
-            });
+            })->sortable();
 
             $grid->updated_at->display(function ($updated_at) {
                 return Carbon::parse($updated_at)->format('Y-m-d');
-            });
+            })->sortable();
 //            $grid->column('created_at');
 //            $grid->column('updated_at')->sortable();
 
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
+                $filter->like('name');
 
             });
         });

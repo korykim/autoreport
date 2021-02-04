@@ -18,6 +18,7 @@ class Reast extends AbstractTool
      * @return string
      */
     protected $title = 'Title';
+
     public function render()
     {
         $id = "reset-pwd-{$this->getKey()}";
@@ -31,6 +32,7 @@ class Reast extends AbstractTool
 </span>
 HTML;
     }
+
     protected function modal($id)
     {
         $form = new Import();
@@ -59,7 +61,6 @@ HTML;
 HTML
         );
     }
-
 
 
     /**
