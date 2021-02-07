@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('livewire.mainboard')
 {{--@section('title', 'Laravel学院')--}}
 
 @section('slider')

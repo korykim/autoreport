@@ -4,8 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Buyer extends Component
+class Buyer extends Mainboard
 {
+
+    public $content='This is buyer';
 
     public function render()
     {

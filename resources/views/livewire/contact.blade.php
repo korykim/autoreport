@@ -1,7 +1,7 @@
 @extends('livewire.mainboard')
-@section('buyer')
+@section('contact')
     @parent
-    @livewire('poster')
+    @livewire('contactpage')
 @endsection
 
 

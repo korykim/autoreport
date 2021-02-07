@@ -21,7 +21,7 @@ class Poster extends Component
         return view('livewire.poster');
     }
 
-        public function storePostInformation()
+    public function storePostInformation()
     {
         $this->validate();
 
