@@ -10,12 +10,14 @@ class Mainboard extends Component
     public $menuList;
     public $content='This is mainboard';
     public $username;
+    public $userprofile='';
 
 
     public function mount()
     {
         $this->menuList =MenuList::all();
         $this->username=auth()->user()->name;
+        $this->userprofile=auth()->user()->profile_photo_path;
 
     }
     public function render()

@@ -5,6 +5,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Livewire\Buyer;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\Customer;
+use App\Http\Livewire\Kboard;
 use App\Http\Livewire\Mainboard;
 use App\Http\Livewire\Total;
 
@@ -55,6 +56,8 @@ Route::group([
 
 
     Route::get('/dashboard',mainboard::class)->name('dashboard');
+    //Route::get('/dashboard',kboard::class)->name('dashboard');
+
     Route::get('/total',total::class)->name('total');
     Route::get('/buyer',buyer::class)->name('buyer');
     Route::get('/customer',customer::class)->name('customer');

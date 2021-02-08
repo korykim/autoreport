@@ -25,4 +25,9 @@ class Buyer extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

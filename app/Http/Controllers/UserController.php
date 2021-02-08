@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
+use App\Models\Contact;
 use App\Models\Customer;
 use App\Models\tag;
 use App\Models\Taggable;
@@ -12,7 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+
 
 class UserController extends Controller
 {
@@ -40,16 +43,33 @@ class UserController extends Controller
         return $buyer;
     }
     public function cc(){
-        $customer=Customer::with('customerpeoples','tags')->findOrFail(7);
+        $customer=Customer::with('customerpeoples','tags','contacts')->findOrFail(7);
         $customer->tags;
         return $customer;
 
     }
 
     public function dd(){
-        $customer=Customer::where('id', '=',7)->firstOrFail();
+//        $customer=Customer::where('id', '=',7)->firstOrFail();
+//
+//        return $customer;
 
-        return $customer;
+//        $cc=Contact::findOrFail(3);
+//        $cc->customer_id;
+//        $cc->buyer_id;
+//        return $cc->buyer_id;
+        //return DB::table('customers')->orderBy('id','desc')->paginate(1);
+
+        $user=User::with('customers','buyers','contacts')->findOrFail(1);
+
+        $user->customers;
+        $user->buyers;
+        $user->contacts;
+
+
+        return $user;
+
+
     }
 
     public function op(){

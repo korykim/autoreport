@@ -16,11 +16,13 @@ class Contactpage extends Component
 
     public $searchTerm = '';
     public $page = 1;
+    //public $gotoPage = 2;
     protected $queryString = [
         'searchTerm' => ['except' => ''],
         'page' => ['except' => 1],
     ];
 
+    //protected $gotoPage=2;
 
     public $readyToLoad = false;
 
@@ -111,7 +113,7 @@ class Contactpage extends Component
 
         return view('livewire.contactpage',[
             'customers'=>\App\Models\Customer::where('user_id','=',$uid)  //'customers'=>$this->readyToLoad?\App\Models\Customer::where('user_id','=',$uid)
-        ->where('name', 'like', $searchTerm)->orderBy($this->sortBy,$this->sortDirection)->paginate(10)
+        ->where('name', 'like', $searchTerm)->orderBy($this->sortBy,$this->sortDirection)->paginate(1)
         ]);
     }
 

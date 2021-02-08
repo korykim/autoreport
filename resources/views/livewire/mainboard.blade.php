@@ -84,7 +84,7 @@
                 <div class="flex items-center justify-center mt-8">
                     <div class="flex items-center">
                         {{--                            <span class="text-gray-800 dark:text-white text-2xl font-semibold">菜单</span>--}}
-                        <a href="/dashboard" class="text-gray-800 dark:text-white text-2xl font-semibold">菜单</a>
+                        <a href="/dashboard" class="text-gray-800 dark:text-white text-2xl font-semibold">Dashboard</a>
                     </div>
                 </div>
 
@@ -119,7 +119,30 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <p>{{$username}}</p>
+
+
+                        <div x-data="{ dropdownOpen: false }" class="relative">
+                            <button @click="dropdownOpen = ! dropdownOpen" class="flex items-center space-x-2 relative focus:outline-none">
+                                <h2 class="text-gray-700 dark:text-gray-300 text-sm hidden sm:block">{{$username}}</h2>
+                                <img class="h-9 w-9 rounded-full border-2 border-purple-500 object-cover" src="/storage/{{$userprofile}}" alt="{{$username}}">
+                            </button>
+
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10" x-show="dropdownOpen" x-transition:enter="transition ease-out duration-100 transform" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75 transform" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" @click.away="dropdownOpen = false">
+                                <a href="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white">Profile</a>
+{{--                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white">Tickets</a>--}}
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-600 hover:text-white">
+                                        {{ __('Logout') }}
+                                    </x-jet-dropdown-link>
+                                </form>
+                            </div>
+                        </div>
 
 
                     </div>
