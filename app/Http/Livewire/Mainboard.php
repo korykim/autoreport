@@ -17,7 +17,7 @@ class Mainboard extends Component
     {
         $this->menuList =MenuList::all();
         $this->username=auth()->user()->name;
-        $this->userprofile=auth()->user()->profile_photo_path;
+        $this->userprofile=auth()->user()->profile_photo_url;
 
     }
     public function render()

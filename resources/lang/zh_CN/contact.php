@@ -13,6 +13,7 @@ return [
         'options' => '联系方法',
         'tag' => '标签',
         'totime' => '联系时间',
+        'user_id' => '主人(必选)',
     ],
     'options' => [
     ],

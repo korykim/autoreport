@@ -124,7 +124,7 @@
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = ! dropdownOpen" class="flex items-center space-x-2 relative focus:outline-none">
                                 <h2 class="text-gray-700 dark:text-gray-300 text-sm hidden sm:block">{{$username}}</h2>
-                                <img class="h-9 w-9 rounded-full border-2 border-purple-500 object-cover" src="/storage/{{$userprofile}}" alt="{{$username}}">
+                                <img class="h-9 w-9 rounded-full border-2 border-purple-500 object-cover" src="{{$userprofile}}" alt="{{$username}}">
                             </button>
 
                             <div class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10" x-show="dropdownOpen" x-transition:enter="transition ease-out duration-100 transform" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75 transform" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" @click.away="dropdownOpen = false">

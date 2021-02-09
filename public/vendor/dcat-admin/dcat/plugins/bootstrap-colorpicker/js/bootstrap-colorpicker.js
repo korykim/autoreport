@@ -158,15 +158,15 @@ var Extension = function () {
       throw new Error('Extension: this.colorpicker.element is not valid');
     }
 
-    this.colorpicker.element.on('colorpickerCreate.colorpicker-ext', _jquery2.default.proxy(this.onCreate, this));
-    this.colorpicker.element.on('colorpickerDestroy.colorpicker-ext', _jquery2.default.proxy(this.onDestroy, this));
-    this.colorpicker.element.on('colorpickerUpdate.colorpicker-ext', _jquery2.default.proxy(this.onUpdate, this));
-    this.colorpicker.element.on('colorpickerChange.colorpicker-ext', _jquery2.default.proxy(this.onChange, this));
-    this.colorpicker.element.on('colorpickerInvalid.colorpicker-ext', _jquery2.default.proxy(this.onInvalid, this));
-    this.colorpicker.element.on('colorpickerShow.colorpicker-ext', _jquery2.default.proxy(this.onShow, this));
-    this.colorpicker.element.on('colorpickerHide.colorpicker-ext', _jquery2.default.proxy(this.onHide, this));
-    this.colorpicker.element.on('colorpickerEnable.colorpicker-ext', _jquery2.default.proxy(this.onEnable, this));
-    this.colorpicker.element.on('colorpickerDisable.colorpicker-ext', _jquery2.default.proxy(this.onDisable, this));
+    this.colorpicker.element.on('colorpickerCreate.colorpicker-Ext', _jquery2.default.proxy(this.onCreate, this));
+    this.colorpicker.element.on('colorpickerDestroy.colorpicker-Ext', _jquery2.default.proxy(this.onDestroy, this));
+    this.colorpicker.element.on('colorpickerUpdate.colorpicker-Ext', _jquery2.default.proxy(this.onUpdate, this));
+    this.colorpicker.element.on('colorpickerChange.colorpicker-Ext', _jquery2.default.proxy(this.onChange, this));
+    this.colorpicker.element.on('colorpickerInvalid.colorpicker-Ext', _jquery2.default.proxy(this.onInvalid, this));
+    this.colorpicker.element.on('colorpickerShow.colorpicker-Ext', _jquery2.default.proxy(this.onShow, this));
+    this.colorpicker.element.on('colorpickerHide.colorpicker-Ext', _jquery2.default.proxy(this.onHide, this));
+    this.colorpicker.element.on('colorpickerEnable.colorpicker-Ext', _jquery2.default.proxy(this.onEnable, this));
+    this.colorpicker.element.on('colorpickerDisable.colorpicker-Ext', _jquery2.default.proxy(this.onDisable, this));
   }
 
   /**
@@ -211,7 +211,7 @@ var Extension = function () {
   }, {
     key: 'onDestroy',
     value: function onDestroy(event) {
-      this.colorpicker.element.off('.colorpicker-ext');
+      this.colorpicker.element.off('.colorpicker-Ext');
     }
 
     /**
@@ -3345,7 +3345,7 @@ var Debugger = function (_Extension) {
 
     _this.eventCounter = 0;
     if (_this.colorpicker.inputHandler.hasInput()) {
-      _this.colorpicker.inputHandler.input.on('change.colorpicker-ext', _jquery2.default.proxy(_this.onChangeInput, _this));
+      _this.colorpicker.inputHandler.input.on('change.colorpicker-Ext', _jquery2.default.proxy(_this.onChangeInput, _this));
     }
     return _this;
   }
@@ -3416,7 +3416,7 @@ var Debugger = function (_Extension) {
       this.eventCounter = 0;
 
       if (this.colorpicker.inputHandler.hasInput()) {
-        this.colorpicker.inputHandler.input.off('.colorpicker-ext');
+        this.colorpicker.inputHandler.input.off('.colorpicker-Ext');
       }
 
       return _get(Debugger.prototype.__proto__ || Object.getPrototypeOf(Debugger.prototype), 'onDestroy', this).call(this, event);
