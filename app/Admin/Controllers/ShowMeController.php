@@ -3,6 +3,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\ShowCurrentAdminUser;
 use App\Admin\Ext\Controllers\MyPage;
 use App\Models\User;
 use Dcat\Admin\Admin;
@@ -24,14 +25,8 @@ use Illuminate\Http\Request;
 class ShowMeController extends AdminController
 {
 
-    public function handle(Request $request)
-    {
-        return $this->response()->success('成功！');
-    }
 
-    public function tt(){
-        dd('tt');
-    }
+
 
     public function index(Content $content)
     {
@@ -64,6 +59,9 @@ class ShowMeController extends AdminController
 
 
                 $row->column(12, $forms);
+
+                $row->column(12, ShowCurrentAdminUser::make());
+
 
 
 
