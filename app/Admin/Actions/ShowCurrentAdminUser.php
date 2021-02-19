@@ -6,8 +6,6 @@ use Dcat\Admin\Actions\Action;
 use Dcat\Admin\Actions\Response;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Traits\HasPermissions;
-use Dcat\Admin\Widgets\Box;
-use Dcat\Admin\Widgets\Card;
 use Dcat\Admin\Widgets\Table;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +25,7 @@ class ShowCurrentAdminUser extends Action
     protected $modalId = 'show-current-user';
 
     /**
-     * Handle the action request.
+     * 处理当前动作的请求接口，如果不需要请直接删除
      *
      * @param Request $request
      *
@@ -36,6 +34,7 @@ class ShowCurrentAdminUser extends Action
     public function handle(Request $request)
     {
         // dump($this->getKey());
+
 
         // 获取当前登录用户模型
         $user = Admin::user();
@@ -51,7 +50,43 @@ class ShowCurrentAdminUser extends Action
     }
 
     /**
+     * 发起请求之前执行的 JS 代码 (actionScript)
+     * @return string
+     */
+    protected function actionScript()
+    {
+        return <<<JS
+            function (data, target, action) {
+                console.log('发起请求之前', data, target, action);
+
+                // return false; 在这里return false可以终止执行后面的操作
+
+                // 更改传递到接口的主键值
+                action.options.key = 123;
+            }
+            JS;
+    }
+
+    /**
+     * 此方法用于在 render 方法执行完毕之前添加 JS 代码
+     *
+     * @return string
+     */
+    protected function script()
+    {
+        return <<<JS
+        console.log('!.!.!.!')
+        JS;
+    }
+
+    /**
      * 处理响应的HTML字符串，附加到弹窗节点中
+     *
+     * 这是服务器返回给客户端的HTML代码
+     *
+     * target 参数是动作按钮的JQ对象
+     * html 参数是接口返回HTML字符串
+     * data 参数是接口返回的完整数据的json对象
      *
      * @return string
      */
@@ -60,7 +95,6 @@ class ShowCurrentAdminUser extends Action
         return <<<'JS'
         function (target, html, data) {
             var $modal = $(target.data('target'));
-
             $modal.find('.modal-body').html(html)
             $modal.modal('show')
         }
@@ -118,7 +152,7 @@ class ShowCurrentAdminUser extends Action
     public function confirm()
     {
         // return ['Confirm?', 'contents'];
-        return ['你确定要查询？', '真的吗？'];
+        //return ['你确定要查询？', '真的吗？'];
     }
 
 

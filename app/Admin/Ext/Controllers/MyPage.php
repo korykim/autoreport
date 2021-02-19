@@ -4,6 +4,7 @@ namespace App\Admin\Ext\Controllers;
 
 use Dcat\Admin\Http\Controllers\AdminController;
 use Illuminate\Contracts\Support\Renderable;
+use View;
 
 
 class MyPage implements Renderable
@@ -25,6 +26,10 @@ class MyPage implements Renderable
             'label'=>$this->label,
             'urls'=>'tt'
         ]);
+
+
+
+        //View::addNamespace('test', __DIR__.'/../views');
 
 //        return admin_view('admin::widgets.alert',[
 //            'title'=>'title',

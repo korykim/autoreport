@@ -25,6 +25,6 @@ Route::group([
     $router->resource('jobtag', 'JobTagController');
     $router->resource('category', 'CategoryController');
     $router->resource('showme', 'ShowMeController');
-    $router->resource('tt', 'ShowMeController@tt');
+
 
 });
