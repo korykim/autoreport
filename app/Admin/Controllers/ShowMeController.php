@@ -3,6 +3,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\BuyerTagManager;
 use App\Admin\Actions\ShowCurrentAdminUser;
 use App\Admin\Actions\ShowMyPage;
 use App\Admin\Ext\Controllers\MyPage;
@@ -53,13 +54,19 @@ class ShowMeController extends AdminController
 
                 //$row->column(12, Card::make(new MyPage()));//"<h1>ss</h1>"
 
-                $forms=Form::make();//->title('表单')->action('showme');
+                //$forms=Form::make();//->title('表单')->action('showme');
 
 
-                $row->column(12, $forms);
+                //$row->column(12, $forms);
 
                 $row->column(12, ShowCurrentAdminUser::make());
-                $row->column(12, ShowMyPage::make());
+                $row->column(6, ShowMyPage::make());
+                //$row->column(12, '');
+                $box=Box::make()
+                    ->title('标签管理')
+                    ->content(BuyerTagManager::make());
+                $row->column(6, $box);
+
 
 
 

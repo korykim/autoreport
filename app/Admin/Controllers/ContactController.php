@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Actions\Grid\ContactTagEditer;
+use App\Admin\Actions\Grid\CustomerTagEditer;
 use App\Admin\Renderable\BuyerPeopleTable;
 use App\Admin\Renderable\BuyerTable;
 use App\Admin\Renderable\CustomerTable;
@@ -106,7 +108,7 @@ class ContactController extends AdminController
 
             $grid->column('tags','标签')->display(function ($dd){
                 return $dd->pluck('name');
-            })->badge('danger');
+            })->badge('primary');
 
             $grid->column('totime')->display(function ($totime) {
                 return Carbon::parse($totime)->format('Y-m-d');
@@ -127,6 +129,10 @@ class ContactController extends AdminController
                 $filter->equal('id');
                 $filter->like('title');
 
+            });
+
+            $grid->tools(function (Grid\Tools $tools) {
+                $tools->append(new ContactTagEditer());
             });
         });
     }

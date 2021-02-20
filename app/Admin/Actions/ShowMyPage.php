@@ -50,7 +50,12 @@ class ShowMyPage extends Action
                 $table = Table::make($user->toArray());
                 return $this->response()->success('查询成功')->html($table);
             }else{
-                return $this->response()->error('查询失败');
+                //return $this->response()->error('查询失败');
+                return $this->response()->script(
+                    <<<JS
+                    console.log('response', $key1);
+                    JS
+                );
             }
         }else{
             return $this->response();
@@ -89,9 +94,13 @@ class ShowMyPage extends Action
     {
         // 添加class
         $this->addHtmlClass('btn btn-primary');
+        //$this->addHtmlClass('form-control');
 
         // 保存弹窗的ID
         $this->setHtmlAttribute('data-target', '#' . $this->modalId);
+        //$this->setHtmlAttribute('sytle', 'margin-top:25px');
+
+        $this->defaultHtmlAttribute('style', 'cursor: pointer; margin-top:5px');
 
         parent::setupHtmlAttributes();
     }
@@ -109,7 +118,7 @@ class ShowMyPage extends Action
         return <<<HTML
                <div class="my-class" style="margin-top:5px">
             <h3>{$this->title}</h3>
-            <div class="input-group input-group-sm quick-form-field" style="bottom:5px">
+            <div class="input-group input-group-sm quick-form-field">
                 <input {$this->attributes} placeholder="{$this->label}" class="myinput form-control field_name _normal_"/>
             </div>
 
@@ -174,7 +183,6 @@ class ShowMyPage extends Action
                 //给服务器提交刚刚写入的input数据
                 var myinput =$('.myinput').val();
                 if(!myinput){
-
                     return false;
                 }else{
                     action.options.data.key1=myinput;

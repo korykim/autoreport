@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Actions\Grid\Customerx;
+use App\Admin\Actions\Grid\CustomerImport;
+use App\Admin\Actions\Grid\CustomerTagEditer;
 use App\Admin\Actions\Grid\Reast;
 use App\Admin\Renderable\CategoryTable;
 use App\Admin\Renderable\TagTable;
@@ -115,7 +116,9 @@ class CustomerController extends AdminController
 
             $grid->tools(function (Grid\Tools $tools) {
                 // excle 导入
-                //$tools->append(new Reast());
+                $tools->append(new CustomerTagEditer());
+                $tools->append(new CustomerImport());
+
             });
         });
     }

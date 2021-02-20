@@ -75,6 +75,22 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
 
         $key=array_keys($row);
 
+//        return new DataModel([
+//            'name' => $row['卖家名称'],
+//            'creditcode' => $row['企业登记号'],
+//            'ceo' => $row['法人'],
+//            'tel' => $row['电话'],
+//            'fax' => $row['传真'],
+//            'site' => $row['网站'],
+//            'address' => $row['地址'],
+//            'Year' => $row['更新次数'],
+//            //'start' => $row['申请时间'],
+//            //'end' => $row['结束时间'],
+//            'status' => $this->checkStatus($row['状态']),
+//            'user_id' => $this->findUser($row['所属用户']),
+//            'category' => $this->findCategory($row['类目']),
+//        ]);
+
         if ($key[0]=='买家名称') {
             // 数据库对应的字段
             return new DataModel([
