@@ -3,8 +3,8 @@
 namespace App\Imports;
 
 use App\Models\category;
-use App\Models\Contact;
-use App\Models\Buyer as DataModel;
+use App\Models\Buyer as BuyerDataModel;
+use App\Models\Customer as CustomerDataModel;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -93,7 +93,7 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
 
         if ($key[0]=='买家名称') {
             // 数据库对应的字段
-            return new DataModel([
+            return new BuyerDataModel([
                 'name' => $row['买家名称'],
                 'creditcode' => $row['信用代码'],
                 'ceo' => $row['法人'],
@@ -106,7 +106,7 @@ class FirstSheetImport implements ToCollection, WithBatchInserts, WithChunkReadi
                 'category' => $this->findCategory($row['类目']),
             ]);
         } else if ($key[0]=='卖家名称') {
-            return new DataModel([
+            return new CustomerDataModel([
                 'name' => $row['卖家名称'],
                 'creditcode' => $row['企业登记号'],
                 'ceo' => $row['法人'],
