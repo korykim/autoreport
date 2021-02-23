@@ -31,6 +31,12 @@ class CustomerController extends AdminController
     protected function grid()
     {
         return Grid::make(new Customer(['tags', 'customerpeoples']), function (Grid $grid) {
+
+            //$titles = ['id' => 'ID', 'name' => '名称', 'ceo' => '老板'];
+
+            //$grid->export()->titles($titles)->xlsx();
+            $grid->export()->xlsx();
+
             $grid->column('id')->sortable();
             $grid->column('name')->filter(
                 Grid\Column\Filter\Like::make()

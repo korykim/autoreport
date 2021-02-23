@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Admin;
 use App\Models\Buyer;
 use App\Models\Contact;
 use App\Models\Customer;
@@ -35,6 +36,9 @@ class UserController extends Controller
 
         return $user;
     }
+    public function addadmin(){
+
+    }
 
     public function test()
     {
@@ -42,6 +46,7 @@ class UserController extends Controller
         $buyer->tags;
         return $buyer;
     }
+
     public function cc(){
         $customer=Customer::with('customerpeoples','tags','contacts')->findOrFail(7);
         $customer->tags;

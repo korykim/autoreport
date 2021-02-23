@@ -42,6 +42,8 @@ class ShowMeController extends AdminController
             width: 40px;
         }');
 
+        //return $content->body(new MyPage($id));
+
         return $content
             ->title('ShowMe')
             ->description('This is show me page ')
@@ -98,4 +100,11 @@ class ShowMeController extends AdminController
 //            $row->column(12, $tab);
 //        });
     }
+
+//    public function edit($id, Content $content)
+//    {
+//
+//        return $content->body(new MyPage($id));
+//    }
+
 }

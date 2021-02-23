@@ -25,8 +25,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/info', function () {
+    return view('info');
+});
+
+
+
+
+
 
 Route::get('addUser', [UserController::class,'index']);
+//Route::get('addadmin', [UserController::class,'addadmin']);
 Route::get('test', [UserController::class,'test']);
 Route::get('cc', [UserController::class,'cc']);
 Route::get('dd', [UserController::class,'dd']);

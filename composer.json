@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "dcat/easy-excel": "^1.0",
         "dcat/laravel-admin": "2.*",
         "dcat/laravel-wherehasin": "^0.6.0",
         "fideloper/proxy": "^4.4",
