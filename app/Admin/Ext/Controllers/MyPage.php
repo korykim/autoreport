@@ -48,13 +48,16 @@ class MyPage implements Renderable
 
     public function render()
     {
-        return admin_view('admin::pages.my-page',[
-            'btnname'=>$this->btnname,
-            'btnname2'=>$this->btnname2,
-            'attributes'=>$this->attributes,
-            'label'=>$this->label,
-            'urls'=>'tt'
-        ]);
+        return view('info');
+
+//        return admin_view('admin::pages.my-page',[
+//            'btnname'=>$this->btnname,
+//            'btnname2'=>$this->btnname2,
+//            'attributes'=>$this->attributes,
+//            'label'=>$this->label,
+//            'urls'=>'tt'
+//        ]);
+
 
         //return view('admin.checks.edit', compact('checks', 'cats', 'groups', 'products','checkArr'));
 

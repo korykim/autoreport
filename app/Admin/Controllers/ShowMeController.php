@@ -4,6 +4,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Actions\BuyerTagManager;
+use App\Admin\Actions\Form\BuyerSelectList;
 use App\Admin\Actions\ShowCurrentAdminUser;
 use App\Admin\Actions\ShowMyPage;
 use App\Admin\Ext\Controllers\MyPage;
@@ -70,7 +71,8 @@ class ShowMeController extends AdminController
                 $row->column(6, $box);
 
 
-
+                //通过payload进行传递参数
+                //$row->column(12, BuyerSelectList::make()->payload(['id' => $this->getKey()]));
 
 
 
