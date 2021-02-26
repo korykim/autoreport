@@ -26,6 +26,7 @@ Route::group([
     $router->resource('category', 'CategoryController');
     $router->resource('showme', 'ShowMeController');
     $router->resource('phpinfo', 'ShowPhpInfoController');
+    $router->resource('buyerdb', 'DataBaseBankController');
 
 
 });

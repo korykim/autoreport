@@ -41,6 +41,7 @@ Route::get('cc', [UserController::class,'cc']);
 Route::get('dd', [UserController::class,'dd']);
 Route::get('adx', [UserController::class,'adx']);
 Route::get('op', [UserController::class,'op']);
+Route::get('db', [UserController::class,'query']);
 
 Route::get('tag', [TagController::class,'index']);
 

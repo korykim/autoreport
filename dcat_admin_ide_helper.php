@@ -51,6 +51,7 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection site
      * @property Grid\Column|Collection address
      * @property Grid\Column|Collection status
+     * @property Grid\Column|Collection mytags
      * @property Grid\Column|Collection category
      * @property Grid\Column|Collection customer_id
      * @property Grid\Column|Collection to
@@ -58,13 +59,45 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection tag
      * @property Grid\Column|Collection totime
      * @property Grid\Column|Collection Year
+     * @property Grid\Column|Collection start
+     * @property Grid\Column|Collection end
+     * @property Grid\Column|Collection companyname
+     * @property Grid\Column|Collection ostatus
+     * @property Grid\Column|Collection province
+     * @property Grid\Column|Collection city
+     * @property Grid\Column|Collection district
+     * @property Grid\Column|Collection owner
+     * @property Grid\Column|Collection capital
+     * @property Grid\Column|Collection startdate
+     * @property Grid\Column|Collection oldname
+     * @property Grid\Column|Collection industry
+     * @property Grid\Column|Collection personal
+     * @property Grid\Column|Collection scope
+     * @property Grid\Column|Collection addresscheck
+     * @property Grid\Column|Collection emailcheck
+     * @property Grid\Column|Collection tel1
+     * @property Grid\Column|Collection tel2
+     * @property Grid\Column|Collection tel3
+     * @property Grid\Column|Collection tel4
+     * @property Grid\Column|Collection tel5
+     * @property Grid\Column|Collection tel6
+     * @property Grid\Column|Collection tel7
      * @property Grid\Column|Collection uuid
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
+     * @property Grid\Column|Collection url
+     * @property Grid\Column|Collection active
      * @property Grid\Column|Collection token
+     * @property Grid\Column|Collection tokenable_type
+     * @property Grid\Column|Collection tokenable_id
+     * @property Grid\Column|Collection abilities
+     * @property Grid\Column|Collection last_used_at
+     * @property Grid\Column|Collection ip_address
+     * @property Grid\Column|Collection user_agent
+     * @property Grid\Column|Collection last_activity
      * @property Grid\Column|Collection tag_id
      * @property Grid\Column|Collection taggable_type
      * @property Grid\Column|Collection taggable_id
@@ -74,6 +107,10 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection should_display_on_index
      * @property Grid\Column|Collection entry_uuid
      * @property Grid\Column|Collection email_verified_at
+     * @property Grid\Column|Collection two_factor_secret
+     * @property Grid\Column|Collection two_factor_recovery_codes
+     * @property Grid\Column|Collection current_team_id
+     * @property Grid\Column|Collection profile_photo_path
      *
      * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection updated_at(string $label = null)
@@ -115,6 +152,7 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection site(string $label = null)
      * @method Grid\Column|Collection address(string $label = null)
      * @method Grid\Column|Collection status(string $label = null)
+     * @method Grid\Column|Collection mytags(string $label = null)
      * @method Grid\Column|Collection category(string $label = null)
      * @method Grid\Column|Collection customer_id(string $label = null)
      * @method Grid\Column|Collection to(string $label = null)
@@ -122,13 +160,45 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection tag(string $label = null)
      * @method Grid\Column|Collection totime(string $label = null)
      * @method Grid\Column|Collection Year(string $label = null)
+     * @method Grid\Column|Collection start(string $label = null)
+     * @method Grid\Column|Collection end(string $label = null)
+     * @method Grid\Column|Collection companyname(string $label = null)
+     * @method Grid\Column|Collection ostatus(string $label = null)
+     * @method Grid\Column|Collection province(string $label = null)
+     * @method Grid\Column|Collection city(string $label = null)
+     * @method Grid\Column|Collection district(string $label = null)
+     * @method Grid\Column|Collection owner(string $label = null)
+     * @method Grid\Column|Collection capital(string $label = null)
+     * @method Grid\Column|Collection startdate(string $label = null)
+     * @method Grid\Column|Collection oldname(string $label = null)
+     * @method Grid\Column|Collection industry(string $label = null)
+     * @method Grid\Column|Collection personal(string $label = null)
+     * @method Grid\Column|Collection scope(string $label = null)
+     * @method Grid\Column|Collection addresscheck(string $label = null)
+     * @method Grid\Column|Collection emailcheck(string $label = null)
+     * @method Grid\Column|Collection tel1(string $label = null)
+     * @method Grid\Column|Collection tel2(string $label = null)
+     * @method Grid\Column|Collection tel3(string $label = null)
+     * @method Grid\Column|Collection tel4(string $label = null)
+     * @method Grid\Column|Collection tel5(string $label = null)
+     * @method Grid\Column|Collection tel6(string $label = null)
+     * @method Grid\Column|Collection tel7(string $label = null)
      * @method Grid\Column|Collection uuid(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
+     * @method Grid\Column|Collection url(string $label = null)
+     * @method Grid\Column|Collection active(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
+     * @method Grid\Column|Collection tokenable_type(string $label = null)
+     * @method Grid\Column|Collection tokenable_id(string $label = null)
+     * @method Grid\Column|Collection abilities(string $label = null)
+     * @method Grid\Column|Collection last_used_at(string $label = null)
+     * @method Grid\Column|Collection ip_address(string $label = null)
+     * @method Grid\Column|Collection user_agent(string $label = null)
+     * @method Grid\Column|Collection last_activity(string $label = null)
      * @method Grid\Column|Collection tag_id(string $label = null)
      * @method Grid\Column|Collection taggable_type(string $label = null)
      * @method Grid\Column|Collection taggable_id(string $label = null)
@@ -138,6 +208,10 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection should_display_on_index(string $label = null)
      * @method Grid\Column|Collection entry_uuid(string $label = null)
      * @method Grid\Column|Collection email_verified_at(string $label = null)
+     * @method Grid\Column|Collection two_factor_secret(string $label = null)
+     * @method Grid\Column|Collection two_factor_recovery_codes(string $label = null)
+     * @method Grid\Column|Collection current_team_id(string $label = null)
+     * @method Grid\Column|Collection profile_photo_path(string $label = null)
      */
     class Grid {}
 
@@ -184,6 +258,7 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection site
      * @property Show\Field|Collection address
      * @property Show\Field|Collection status
+     * @property Show\Field|Collection mytags
      * @property Show\Field|Collection category
      * @property Show\Field|Collection customer_id
      * @property Show\Field|Collection to
@@ -191,13 +266,45 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection tag
      * @property Show\Field|Collection totime
      * @property Show\Field|Collection Year
+     * @property Show\Field|Collection start
+     * @property Show\Field|Collection end
+     * @property Show\Field|Collection companyname
+     * @property Show\Field|Collection ostatus
+     * @property Show\Field|Collection province
+     * @property Show\Field|Collection city
+     * @property Show\Field|Collection district
+     * @property Show\Field|Collection owner
+     * @property Show\Field|Collection capital
+     * @property Show\Field|Collection startdate
+     * @property Show\Field|Collection oldname
+     * @property Show\Field|Collection industry
+     * @property Show\Field|Collection personal
+     * @property Show\Field|Collection scope
+     * @property Show\Field|Collection addresscheck
+     * @property Show\Field|Collection emailcheck
+     * @property Show\Field|Collection tel1
+     * @property Show\Field|Collection tel2
+     * @property Show\Field|Collection tel3
+     * @property Show\Field|Collection tel4
+     * @property Show\Field|Collection tel5
+     * @property Show\Field|Collection tel6
+     * @property Show\Field|Collection tel7
      * @property Show\Field|Collection uuid
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
+     * @property Show\Field|Collection url
+     * @property Show\Field|Collection active
      * @property Show\Field|Collection token
+     * @property Show\Field|Collection tokenable_type
+     * @property Show\Field|Collection tokenable_id
+     * @property Show\Field|Collection abilities
+     * @property Show\Field|Collection last_used_at
+     * @property Show\Field|Collection ip_address
+     * @property Show\Field|Collection user_agent
+     * @property Show\Field|Collection last_activity
      * @property Show\Field|Collection tag_id
      * @property Show\Field|Collection taggable_type
      * @property Show\Field|Collection taggable_id
@@ -207,6 +314,10 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection should_display_on_index
      * @property Show\Field|Collection entry_uuid
      * @property Show\Field|Collection email_verified_at
+     * @property Show\Field|Collection two_factor_secret
+     * @property Show\Field|Collection two_factor_recovery_codes
+     * @property Show\Field|Collection current_team_id
+     * @property Show\Field|Collection profile_photo_path
      *
      * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection updated_at(string $label = null)
@@ -248,6 +359,7 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection site(string $label = null)
      * @method Show\Field|Collection address(string $label = null)
      * @method Show\Field|Collection status(string $label = null)
+     * @method Show\Field|Collection mytags(string $label = null)
      * @method Show\Field|Collection category(string $label = null)
      * @method Show\Field|Collection customer_id(string $label = null)
      * @method Show\Field|Collection to(string $label = null)
@@ -255,13 +367,45 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection tag(string $label = null)
      * @method Show\Field|Collection totime(string $label = null)
      * @method Show\Field|Collection Year(string $label = null)
+     * @method Show\Field|Collection start(string $label = null)
+     * @method Show\Field|Collection end(string $label = null)
+     * @method Show\Field|Collection companyname(string $label = null)
+     * @method Show\Field|Collection ostatus(string $label = null)
+     * @method Show\Field|Collection province(string $label = null)
+     * @method Show\Field|Collection city(string $label = null)
+     * @method Show\Field|Collection district(string $label = null)
+     * @method Show\Field|Collection owner(string $label = null)
+     * @method Show\Field|Collection capital(string $label = null)
+     * @method Show\Field|Collection startdate(string $label = null)
+     * @method Show\Field|Collection oldname(string $label = null)
+     * @method Show\Field|Collection industry(string $label = null)
+     * @method Show\Field|Collection personal(string $label = null)
+     * @method Show\Field|Collection scope(string $label = null)
+     * @method Show\Field|Collection addresscheck(string $label = null)
+     * @method Show\Field|Collection emailcheck(string $label = null)
+     * @method Show\Field|Collection tel1(string $label = null)
+     * @method Show\Field|Collection tel2(string $label = null)
+     * @method Show\Field|Collection tel3(string $label = null)
+     * @method Show\Field|Collection tel4(string $label = null)
+     * @method Show\Field|Collection tel5(string $label = null)
+     * @method Show\Field|Collection tel6(string $label = null)
+     * @method Show\Field|Collection tel7(string $label = null)
      * @method Show\Field|Collection uuid(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
+     * @method Show\Field|Collection url(string $label = null)
+     * @method Show\Field|Collection active(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
+     * @method Show\Field|Collection tokenable_type(string $label = null)
+     * @method Show\Field|Collection tokenable_id(string $label = null)
+     * @method Show\Field|Collection abilities(string $label = null)
+     * @method Show\Field|Collection last_used_at(string $label = null)
+     * @method Show\Field|Collection ip_address(string $label = null)
+     * @method Show\Field|Collection user_agent(string $label = null)
+     * @method Show\Field|Collection last_activity(string $label = null)
      * @method Show\Field|Collection tag_id(string $label = null)
      * @method Show\Field|Collection taggable_type(string $label = null)
      * @method Show\Field|Collection taggable_id(string $label = null)
@@ -271,6 +415,10 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection should_display_on_index(string $label = null)
      * @method Show\Field|Collection entry_uuid(string $label = null)
      * @method Show\Field|Collection email_verified_at(string $label = null)
+     * @method Show\Field|Collection two_factor_secret(string $label = null)
+     * @method Show\Field|Collection two_factor_recovery_codes(string $label = null)
+     * @method Show\Field|Collection current_team_id(string $label = null)
+     * @method Show\Field|Collection profile_photo_path(string $label = null)
      */
     class Show {}
 

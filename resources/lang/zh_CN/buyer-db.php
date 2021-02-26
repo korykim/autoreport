@@ -1,0 +1,37 @@
+<?php 
+return [
+    'labels' => [
+        'BuyerDb' => '企业数据',
+        'buyer-db' => '企业数据',
+    ],
+    'fields' => [
+        'companyname' => 'companyname',
+        'ostatus' => 'ostatus',
+        'creditcode' => 'creditcode',
+        'province' => 'province',
+        'city' => 'city',
+        'district' => 'district',
+        'owner' => 'owner',
+        'capital' => 'capital',
+        'startdate' => 'startdate',
+        'oldname' => 'oldname',
+        'industry' => 'industry',
+        'type' => 'type',
+        'personal' => 'personal',
+        'scope' => 'scope',
+        'address' => 'address',
+        'addresscheck' => 'addresscheck',
+        'email' => 'email',
+        'emailcheck' => 'emailcheck',
+        'site' => 'site',
+        'tel1' => 'tel1',
+        'tel2' => 'tel2',
+        'tel3' => 'tel3',
+        'tel4' => 'tel4',
+        'tel5' => 'tel5',
+        'tel6' => 'tel6',
+        'tel7' => 'tel7',
+    ],
+    'options' => [
+    ],
+];

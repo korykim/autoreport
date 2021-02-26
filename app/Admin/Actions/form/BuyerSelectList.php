@@ -3,6 +3,7 @@
 namespace App\Admin\Actions\Form;
 
 use App\Models\Buyer;
+use App\Models\region;
 use App\Models\tag;
 use Dcat\Admin\Contracts\LazyRenderable;
 use Dcat\Admin\Traits\LazyWidget;
@@ -63,50 +64,52 @@ class BuyerSelectList extends Form implements LazyRenderable
 
         $buyer=Buyer::all();
         $tag=Tag::all();
+        $region=Region::all();
 
         //$this->text('text','标签')->rules('required', ['required' => '标签不能为空']);
         $this->select('select','选择买家')->options($buyer->pluck('name','id'))->rules('required', ['required' => '买家不能为空']);
         $this->tags('tags','标签')->options($tag->pluck('name','id'))->rules('required', ['required' => '标签不能为空']);
 
-        $this->select('region','选择地区')->options([
-
-            1=> '北京',
-            2=> '天津',
-            3=> '河北',
-            4=> '山西',
-            5=> '内蒙古',
-            6=> '辽宁',
-            7=> '吉林',
-            8=> '黑龙江',
-            9=> '上海',
-            10=> '江苏',
-            11=> '浙江',
-            12=> '安徽',
-            13=> '福建',
-            14=> '江西',
-            15=> '山东',
-            16=> '宁波',
-            17=> '厦门',
-            18=> '河南',
-            19=> '湖北',
-            20=> '湖南',
-            21=> '广东',
-            22=> '广西',
-            23=> '海南',
-            24=> '深圳',
-            25=> '珠海',
-            26=> '重庆',
-            27=> '四川',
-            28=> '贵州',
-            29=> '云南',
-            30=> '西藏',
-            31=> '陕西',
-            32=> '甘肃',
-            33=> '青海',
-            34=> '宁夏',
-            35=> '新疆'
-
-        ]);
+        $this->select('region','选择地区')->options($region->pluck('name','id'))->rules('required', ['required' => '地区不能为空']);
+//        $this->select('region','选择地区')->options([
+//
+//            1=> '北京',
+//            2=> '天津',
+//            3=> '河北',
+//            4=> '山西',
+//            5=> '内蒙古',
+//            6=> '辽宁',
+//            7=> '吉林',
+//            8=> '黑龙江',
+//            9=> '上海',
+//            10=> '江苏',
+//            11=> '浙江',
+//            12=> '安徽',
+//            13=> '福建',
+//            14=> '江西',
+//            15=> '山东',
+//            16=> '宁波',
+//            17=> '厦门',
+//            18=> '河南',
+//            19=> '湖北',
+//            20=> '湖南',
+//            21=> '广东',
+//            22=> '广西',
+//            23=> '海南',
+//            24=> '深圳',
+//            25=> '珠海',
+//            26=> '重庆',
+//            27=> '四川',
+//            28=> '贵州',
+//            29=> '云南',
+//            30=> '西藏',
+//            31=> '陕西',
+//            32=> '甘肃',
+//            33=> '青海',
+//            34=> '宁夏',
+//            35=> '新疆'
+//
+//        ]);
 
     }
 

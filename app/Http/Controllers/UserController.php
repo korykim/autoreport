@@ -6,6 +6,7 @@ use Admin;
 use App\Models\Buyer;
 use App\Models\Contact;
 use App\Models\Customer;
+use App\Models\DataBaseBank;
 use App\Models\tag;
 use App\Models\Taggable;
 use App\Models\User;
@@ -52,6 +53,29 @@ class UserController extends Controller
         $customer->tags;
         return $customer;
 
+    }
+
+    public function query(){
+
+
+        $province='广东';
+        $city=''; //广州
+        $companyname=''; //商贸
+        $industry=''; //化妆品
+        $scope='化妆品';
+        $limit=10;
+
+        $dbs=DataBaseBank::where('province','=',$province)
+            ->where('scope', 'LIKE', '%'.$scope.'%')
+            ->where('companyname', 'LIKE', '%'.$companyname.'%')
+            ->where('personal','>=',5)
+            ->where('industry', 'LIKE','%'.$industry.'%')
+            ->whereNotNull('email')
+            ->where('city', 'LIKE','%'.$city.'%')
+            ->limit($limit)
+            ->get();
+
+        return $dbs;
     }
 
     public function dd(){
