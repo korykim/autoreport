@@ -27,6 +27,7 @@ Route::group([
     $router->resource('showme', 'ShowMeController');
     $router->resource('phpinfo', 'ShowPhpInfoController');
     $router->resource('buyerdb', 'DataBaseBankController');
+    $router->resource('plan', 'WorkPlanController');
 
 
 });

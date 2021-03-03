@@ -30,4 +30,8 @@ class Buyer extends Model
     {
         return $this->hasMany(Contact::class);
     }
+    public function workPlans()
+    {
+        return $this->hasMany(WorkPlan::class);
+    }
 }

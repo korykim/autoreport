@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 
+use App\Admin\Actions\Grid\BuyerMachingManager;
 use App\Admin\Actions\Grid\BuyerTagEditer;
 use App\Admin\Actions\Grid\Reast;
 use App\Admin\Renderable\CategoryTable;
@@ -116,6 +117,7 @@ class BuyerController extends AdminController
 
             $grid->tools(function (Grid\Tools $tools) {
                 $tools->append(new BuyerTagEditer());
+
                 // excle 导入
                 $tools->append(new Reast());
 

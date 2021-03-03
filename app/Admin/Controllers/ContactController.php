@@ -57,9 +57,9 @@ class ContactController extends AdminController
 
             $grid->column('id')->sortable();
             $grid->column('title')->filter(Grid\Column\Filter\Like::make());
-            $grid->column('user_id','主人')->display(function ($userId) {
-                return User::find($userId)->name;
-            })->filterByValue('user.id');
+//            $grid->column('user_id','主人')->display(function ($userId) {
+//                return User::find($userId)->name;
+//            })->filterByValue('user.id');
             $grid->column('customer_id')->display(function ($customer_id) {
                 return CustomerAdministrator::find($customer_id)->name;
             })->filterByValue('customer.id');
@@ -154,7 +154,7 @@ class ContactController extends AdminController
             $show->field('to');
             $show->field('content');
             $show->field('options');
-            $show->field('user_id');
+            //$show->field('user_id');
             $show->field('tag','状态');
             $show->field('totime');
             $show->field('created_at');
@@ -175,12 +175,12 @@ class ContactController extends AdminController
 
             $form->display('id');
             $form->text('title')->required();
-            $form->selectTable('user_id')
-                ->required()
-                ->title('选择用户')
-                ->dialogWidth('50%') // 弹窗宽度，默认 800px
-                ->from(UserTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
-                ->model(Administrator::class, 'id', 'name'); // 设置编辑数据显示
+//            $form->selectTable('user_id')
+//                ->required()
+//                ->title('选择用户')
+//                ->dialogWidth('50%') // 弹窗宽度，默认 800px
+//                ->from(UserTable::make(['id' => $form->getKey()])) // 设置渲染类实例，并传递自定义参数
+//                ->model(Administrator::class, 'id', 'name'); // 设置编辑数据显示
 
 
             $form->selectTable('customer_id')

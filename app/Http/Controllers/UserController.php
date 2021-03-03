@@ -60,20 +60,27 @@ class UserController extends Controller
 
         $province='广东';
         $city=''; //广州
-        $companyname=''; //商贸
-        $industry=''; //化妆品
+        $personal=0; //社保人数
+        $companyname='商贸'; //商贸
+        $industry='批发'; //化妆品
         $scope='化妆品';
         $limit=10;
 
         $dbs=DataBaseBank::where('province','=',$province)
             ->where('scope', 'LIKE', '%'.$scope.'%')
             ->where('companyname', 'LIKE', '%'.$companyname.'%')
-            ->where('personal','>=',5)
+            ->where('personal','>=',$personal)
             ->where('industry', 'LIKE','%'.$industry.'%')
             ->whereNotNull('email')
+            //->whereNotNull('tel1')
             ->where('city', 'LIKE','%'.$city.'%')
+//            ->havingRaw("tel1 REGEXP '^[1][3456789][0-9]{9}$'")
+//            ->orHavingRaw("tel2 REGEXP '^[1][3456789][0-9]{9}$'")
             ->limit($limit)
+            ->orderByDesc('personal')
             ->get();
+
+        //$dbs2=DB::table('data_base_banks')->whereRaw("tel1 REGEXP '^[1][35678][0-9]{9}$'")->get(); //^[^0-9a-zA-Z]
 
         return $dbs;
     }

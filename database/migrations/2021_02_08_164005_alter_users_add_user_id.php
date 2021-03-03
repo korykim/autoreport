@@ -14,7 +14,7 @@ class AlterUsersAddUserId extends Migration
     public function up()
     {
         Schema::table('contacts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->default(0)->unique();
+            //$table->integer('user_id')->unsigned()->default(0)->unique();
         });
     }
 

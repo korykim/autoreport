@@ -70,7 +70,7 @@ class BuyerSelectList extends Form implements LazyRenderable
         $this->select('select','选择买家')->options($buyer->pluck('name','id'))->rules('required', ['required' => '买家不能为空']);
         $this->tags('tags','标签')->options($tag->pluck('name','id'))->rules('required', ['required' => '标签不能为空']);
 
-        $this->select('region','选择地区')->options($region->pluck('name','id'))->rules('required', ['required' => '地区不能为空']);
+        //$this->select('region','选择地区')->options($region->pluck('name','id'))->rules('required', ['required' => '地区不能为空']);
 //        $this->select('region','选择地区')->options([
 //
 //            1=> '北京',

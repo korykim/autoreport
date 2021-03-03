@@ -111,6 +111,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection two_factor_recovery_codes
      * @property Grid\Column|Collection current_team_id
      * @property Grid\Column|Collection profile_photo_path
+     * @property Grid\Column|Collection jobId
+     * @property Grid\Column|Collection personal_name
+     * @property Grid\Column|Collection total_Personal
      *
      * @method Grid\Column|Collection created_at(string $label = null)
      * @method Grid\Column|Collection updated_at(string $label = null)
@@ -212,6 +215,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection two_factor_recovery_codes(string $label = null)
      * @method Grid\Column|Collection current_team_id(string $label = null)
      * @method Grid\Column|Collection profile_photo_path(string $label = null)
+     * @method Grid\Column|Collection jobId(string $label = null)
+     * @method Grid\Column|Collection personal_name(string $label = null)
+     * @method Grid\Column|Collection total_Personal(string $label = null)
      */
     class Grid {}
 
@@ -318,6 +324,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection two_factor_recovery_codes
      * @property Show\Field|Collection current_team_id
      * @property Show\Field|Collection profile_photo_path
+     * @property Show\Field|Collection jobId
+     * @property Show\Field|Collection personal_name
+     * @property Show\Field|Collection total_Personal
      *
      * @method Show\Field|Collection created_at(string $label = null)
      * @method Show\Field|Collection updated_at(string $label = null)
@@ -419,6 +428,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection two_factor_recovery_codes(string $label = null)
      * @method Show\Field|Collection current_team_id(string $label = null)
      * @method Show\Field|Collection profile_photo_path(string $label = null)
+     * @method Show\Field|Collection jobId(string $label = null)
+     * @method Show\Field|Collection personal_name(string $label = null)
+     * @method Show\Field|Collection total_Personal(string $label = null)
      */
     class Show {}
 
